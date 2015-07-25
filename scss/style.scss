@@ -1,0 +1,190 @@
+/*!
+Theme Name: 	Hewlett Interactive Graphic
+Description: 	Special interactive graphic for Hewlett board meeting created by Christina Moses of threeshades.com
+Version:		1.0.1
+Author:         Wendy Shoef
+Author URI:     http://perkstersolutions.com
+Notes:  		This was developed by Wendy Shoef of http://www.perkstersolutions.com
+				Perkster Solutions works with designers in helping them bring their work online!
+*/
+
+@import "bourbon";
+//@import "neat";
+
+$bb-bp-desk : 1150px;
+$breakpoints: (
+	'phone': 320px, 
+	'smartphone':425px,
+	'tablet': 768px,
+	'lap': 1024px,
+	'desk': $bb-bp-desk,
+	'desktop' : $bb-bp-desk,
+	'desk-wide': 1366px,
+	'menu-bp' : 800px,  //This is the main breakpoint for the menu where a responsive side menu will be used
+	'menu-mobile' : 425px  //Sometimes further modifications of the menu are necessary for smaller screens
+)!default;
+// *************** NOTE **************** //
+// Include media is not in the theme file as it is our preferred method of creating responsive websites and is thus required on all
+@import "plugins/include-media";
+
+
+//************* STANDARDIZED COLORS **************/
+@import "plugins/color-name-hue/color-name-hue";
+
+@import "theme/bb-setup";
+@import "bear-bones/bear-bones";
+
+body {
+	margin: 0 auto;
+	text-align: center;
+	background-image: url('images/background.jpg');
+	-webkit-background-size: cover;
+	background-size: cover;
+	overflow: hidden;
+}
+.container {
+	
+}
+#pie {
+	transition: all 3s ease-in-out;
+	//transition-timing-function: ease-in-out;
+}
+#pie-all, .center-icon, #pie-slice {
+	margin: auto;
+	position: absolute;
+	top: 0; left: 0; bottom: 0; right: 0;
+		
+}
+#pie-slice {
+	//display: none;
+	opacity: 0;
+	z-index: 0;
+}
+.pie-slice {
+	transform: scale(0.5);
+}
+#pie-all, #pie-slice {
+	width: 720px;
+	height: 720px;
+}
+.center-icon {	
+	z-index: 200;
+}
+
+#pie-all {
+	transition: all 3s ease-in-out;
+	z-index: 100;
+}
+.programs #pie-all {
+	transform:rotate(-260deg);	
+}
+.board-book #pie-all {
+	transform:rotate(-325deg);
+}
+.board-meeting #pie-all {
+	transform:rotate(-25deg);
+}
+.communications  #pie-all{
+	transform:rotate(-210deg);
+}
+.hr-investments  {
+	#pie-all{
+		transform:rotate(-90deg);
+	}
+	#pie-slice {
+		//opacity: 1;
+		//transform:rotate(-90deg);
+		transform:rotate(-90deg) scale(0.65);
+		//transform: scale(0.65);
+		//transform-origin: 45% 60%;
+	}
+	#pie-slice.fade-in {
+		animation: pie-slice 3s ease-in-out 3s;
+		animation-fill-mode: forwards;
+	}
+}
+.finance #pie-all{
+	transform:rotate(-145deg);
+}
+.legal #pie-all {
+	transform:rotate(-175deg);
+}
+
+.fade-out {
+	opacity: 0!important;
+}
+
+
+
+.faded {
+	opacity: 0.3!important;
+}
+
+@keyframes pie-slice-hr-investments {
+	0% {
+		opacity: 1;
+		//transform:rotate(-90deg) scale(0.65);
+		transform:scale(0.5);
+		//transform-origin: 45% 60%;
+		z-index: 150;
+	}
+	100% {
+		//transform:rotate(-90deg) scale(1);
+		transform: scale(1);
+		//transform: scale(2);
+		//transform:rotate(-90deg);
+		opacity: 1;
+		z-index: 150;
+	}
+}
+/*
+.rotation .board-meeting {
+	#pie-slice {
+		animation: pie-slice 2s ease-in-out 1s;
+		animation-fill-mode: forwards;
+	}
+	#pie-all {
+	  animation: board-meeting 5s ease-in-out 1s;
+	  animation-fill-mode: forwards;
+	}
+}
+
+.rotation .board-book {
+	#pie-slice {
+		animation: pie-slice 2s ease-in-out 5s;
+		animation-fill-mode: forwards;
+	}
+	#pie-all {
+	  animation: board-book 5s ease-in-out 1s;
+	  animation-fill-mode: forwards;
+	}
+}
+@keyframes pie-slice {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+@keyframes board-meeting {
+  0% {
+    //transform:rotate(0deg);
+	//transform-origin: initial;
+	transform:rotate(-325deg);
+  }
+  65% {
+	transform:rotate(-25deg);
+  }
+  80% {
+	opacity: 0;
+	transform:rotate(-25deg);
+  }
+  100% {
+	
+    //transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+	transform:rotate(-25deg);
+    opacity: 1;
+  }
+}
+*/

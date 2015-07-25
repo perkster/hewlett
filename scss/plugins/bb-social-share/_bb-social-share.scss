@@ -1,0 +1,45 @@
+/************ Plugins / BB Social Share ***********/
+$bb-social-share-default: (
+	'span' : 'accessibility'
+)!default;
+$bb-social-share-custom: ()!default;
+$bb-social-share: map-extend($bb-social-share-default, $bb-social-share-custom, true);
+.bb-social-share {
+
+}
+.bb-social-share__list {
+	@extend %bb-ul--none;
+	//@extend %bb-ul--inline;
+}
+.bb-social-share__item {
+	display: inline-block;
+	text-align: center;
+	margin: 0 auto;
+	margin-left: 0.5em;
+	&:first-of-type {
+		margin-left: 0;
+	}
+}
+.bb-social-share__link {
+	display: inline-block;
+	&:hover {
+		//@include bb_socialColors( $attribute: 'background-color' );
+	}
+	i {
+		text-align: center;
+		display: table-cell;
+		vertical-align: middle;
+		width: 2em;
+		height: 2em;
+	}
+	span {
+		@if( map-get( $bb-social-share, 'span' ) == 'accessibility' ) {
+			@extend .accessibility;	
+		} @else {
+			display: table-cell;
+			padding: 0 0.25em;
+			color: $font-color;
+		}
+	}
+}
+

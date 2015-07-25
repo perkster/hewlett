@@ -1,0 +1,14 @@
+//*----------------- Theme / Bear Bones Setup --------------------*/
+
+$bb-font-custom: (
+	'size': 18px,
+	'size--phone': 16px,
+	'family': ('Open Sans', Sans-serif),
+	'line-height-ratio': 1.35,
+	//*Type Scale -  Uses the options on http://type-scale.com/ as well as an option for "defaults" as below*/
+	//To use a 'custom' scale, you must set type-scale to 'custom' and include the custom-type-scale sub map.
+	//Copy the 'default-type-scale' submap from the bear-bones/base/_defaults file and rename it
+	//'type-scale': 'Minor Third',
+	
+);
+

@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Hewlett Interactive Infographic</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="container-wrapper">
+		<div class="container">
+			<h1><span class="header-top">Board Meeting</span>Process Overview</h1>
+			<div id="pie-container" class="rotation">
+			  <div id="pie" class="">
+				<img src="images/center-icon.png" alt="" id="center-icon" class="center-icon">
+				<img id="pie-all" name="mpieall" src="images/pie-all.png" width="720" height="720" border="0" id="mpieall" usemap="#m_pieall" alt="" data-position="start"/>
+				<map name="m_pieall" id="m_pieall">
+					<area id="mpie-hr-investments" shape="poly" coords="418,380,410,325,504,259,520,291,529,331,534,355,535,369,531,405,525,427,507,455,418,380" href="#hr-investments" alt="" />
+					<area id="mpie-finance" shape="poly" coords="418,383,516,464,499,480,477,499,454,512,433,521,391,410,418,383" href="#finance" alt="" />
+					<area id="mpie-legal" shape="poly" coords="391,411,439,535,417,544,392,549,369,550,333,546,357,421,391,411" href="#legal" alt="" />
+					<area id="mpie-communications" shape="poly" coords="357,421,329,556,297,547,267,535,244,520,226,504,318,401,357,421" href="#communications" alt="" />
+					<area id="mpie-programs" shape="poly" coords="317,402,206,523,166,474,158,456,146,427,136,397,135,371,132,335,141,305,149,272,303,334,317,402" href="#programs" alt="" />
+					<area id="mpie-board-book" shape="poly" coords="304,335,137,267,158,229,178,205,201,183,226,157,249,147,275,134,294,129,315,123,338,120,341,121,345,299,304,335" href="#board-book" alt="" />
+					<area id="mpie-board-meeting" shape="poly" coords="409,324,568,216,531,175,510,158,480,139,450,128,417,115,396,114,379,109,358,109,341,109,348,301,409,324" href="#board-meeting" alt="" />
+				</map>
+				<img name="pie-slice" src="images/pie-slice.png" border="0" id="pie-slice" usemap="#m_pie-hr-investments" alt="" />
+				<map name="m_pie-hr-investments" id="m_pie-hr-investments">
+				<area shape="poly" coords="363,300,532,106,477,68,382,42,319,53,266,67,216,95,349,299,363,300" href="#hr-investments" alt="" />
+				<area shape="poly" coords="522,293,507,258,489,236,475,219,468,210,385,300,414,331,522,293" href="#finance" alt="" />
+				<area shape="poly" coords="540,394,546,369,545,342,545,322,540,300,537,291,416,332,422,367,540,394" href="#legal" alt="" />
+				<area shape="poly" coords="423,368,552,398,543,423,535,445,520,469,503,489,492,497,399,407,423,368" href="#communications" alt="" />
+				<area shape="poly" coords="398,407,330,414,266,569,316,583,387,587,444,568,483,546,517,521,398,407" href="#programs" alt="" />
+				<area shape="poly" coords="332,414,303,373,120,373,127,430,144,468,169,510,198,541,229,566,259,581,332,414" href="#board-book" alt="" />
+				<area shape="poly" coords="330,312,222,150,190,178,153,221,126,273,113,325,105,372,303,374,330,312" href="#board-meeting" alt="" />
+				</map>
+				<map name="m_pie-board-meeting" id="m_pie-board-meeting">
+				<area shape="poly" coords="398,407,330,414,266,569,316,583,387,587,444,568,483,546,517,521,398,407" href="#board-book" alt="" />
+				<area shape="poly" coords="332,414,303,373,120,373,127,430,144,468,169,510,198,541,229,566,259,581,332,414" href="#board-book" alt="" />
+				<area shape="poly" coords="330,312,222,150,190,178,153,221,126,273,113,325,105,372,303,374,330,312" href="#board-book" alt="" />
+				</map>
+				<map name="m_pie-board-book" id="m_pie-board-meeting">
+				<area shape="poly" coords="398,407,330,414,266,569,316,583,387,587,444,568,483,546,517,521,398,407" href="#board-meeting" alt="" />
+				<area shape="poly" coords="332,414,303,373,120,373,127,430,144,468,169,510,198,541,229,566,259,581,332,414" href="#board-meeting" alt="" />
+				<area shape="poly" coords="330,312,222,150,190,178,153,221,126,273,113,325,105,372,303,374,330,312" href="#board-meeting" alt="" />
+				</map>
+				
+			  </div>
+			</div>
+		</div>
+	</div>
+	
+<script  type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" >if (typeof jQuery === 'undefined') {
+  document.write(unescape('%3Cscript%20src%3D%22/js/jquery-2.1.4.min.js%22%3E%3C/script%3E')); };
+
+(function ( $ ) {
+ 
+	$.fn.pierotate = function ( options ) {
+		var settings = $.extend( {
+			target: this,
+			position: 'start'
+		}, options );
+		
+		alert( settings.target );
+		alert( settings.position );
+		return this;
+	};
+    $.fn.replacesrc = function( options ) {
+		var settings = $.extend({
+            // These are the defaults.
+            imgclass: "rotation-programs-and-grants",
+			imgsrc : "images/pie-2.png"
+        }, options );
+		
+		$('#pie').removeClass();
+		this.attr('src', 'images/pie-all.png');
+
+		this.addClass( settings.imgclass ).delay(2000).queue(function(next){
+			$(this).addClass("opacity-low").delay(3000).queue(function(next){
+				$(this).attr('src', settings.imgsrc);
+				$(this).addClass("opacity-1");
+				next();
+			});;
+			//$(this).attr('src', settings.imgsrc);
+			//$(this).addClass("opacity-1");
+			next();
+		});
+		
+		return this;
+    };
+	
+		
+}( jQuery ));
+
+ $(document).ready(function () {
+	
+	$( 'area' ).click( function(e) {
+		e.preventDefault();
+		
+		if($('#pie-slice').is(':visible')) {
+			// Code
+			$('#pie-all').removeClass('fade-out').fadeIn( 'slow' );			
+			$('#pie-slice').fadeOut( 500 );
+		}
+		var str = this.href;
+		var n = str.indexOf("#");
+		var pos = str.substr(n+1);
+		var start = $( '#pie-all' ).data('position');
+		//$('#pie').attr('class', start + '-' + pos);
+		$('#pie').attr('class', pos);
+		$('#pie-all').attr('data-position', pos);
+		$('#pie-all').data('position', pos);
+		//alert( $( '#pie-all' ).data('position') ); 
+		$('#pie-slice').attr('usemap', 'm_pie-' + pos );
+		$('#pie-all').attr('class', 'fade-out');
+		
+		setTimeout(function(){
+		  //alert("Boom!");
+		  $('#pie-slice').show(  );
+		  $('#pie-all').hide(  );
+		}, 2500);
+		
+	});
+	
+		
+		$('.anchorlink').on('click', function(e) {
+			e.preventDefault();
+		  // rest of stuff
+		});
+		
+		
+});
+
+
+</script>
+</body>
+</html>

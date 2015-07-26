@@ -43,148 +43,284 @@ body {
 	overflow: hidden;
 }
 .container {
-	
+	padding-top: 2rem;
 }
+
+h1 {
+	color: #526168;
+	font-size: 2rem;
+	text-transform: uppercase;
+	.header-top {
+		font-size: 0.75em;
+		display: block;
+	}
+}
+
 #pie {
 	transition: all 3s ease-in-out;
 	//transition-timing-function: ease-in-out;
 }
-#pie-all, .center-icon, #pie-slice {
+#pie-all, .center-icon, .pie-slice img {
 	margin: auto;
 	position: absolute;
-	top: 0; left: 0; bottom: 0; right: 0;
+	top: 5rem; left: 0; bottom: 0; right: 0;
 		
 }
-#pie-slice {
-	//display: none;
-	opacity: 0;
-	z-index: 0;
-}
-.pie-slice {
+
+#pie-all {
 	transform: scale(0.5);
+	opacity: 0;
+	z-index: 300;
 }
-#pie-all, #pie-slice {
-	width: 720px;
-	height: 720px;
-}
+
 .center-icon {	
 	z-index: 200;
 }
 
-#pie-all {
-	transition: all 3s ease-in-out;
-	z-index: 100;
+// ***************** PIE SLICE ***************** //
+.pie-slice {
+	//transition: all 3s ease-in-out;
+	min-height: 720px;
+	&__image {		
+		transition: all 3s ease-in-out;
+		transform: scale(0.5);
+		z-index: 150;
+	}
 }
-.programs #pie-all {
-	transform:rotate(-260deg);	
+.pie-text {
+	//display: none;
+	opacity: 0;
+	transition: all 2s ease-in-out 2.5s;
+	margin: auto;
+	position: absolute;
+	top: 5em; left: 0; bottom: 0; right: 0;
+	img {
+		max-height: 100%;
+		width: auto;
+	}
 }
-.board-book #pie-all {
-	transform:rotate(-325deg);
+
+
+#pie-slice-board-meeting {
+	.pie-slice__image {
+		z-index: 10;
+	}
 }
-.board-meeting #pie-all {
-	transform:rotate(-25deg);
+#pie-slice-board-book {
+	.pie-slice__image {
+		z-index: 9;
+	}
 }
-.communications  #pie-all{
-	transform:rotate(-210deg);
+#pie-slice-programs {
+	.pie-slice__image {
+		z-index: 8;
+	}
+}
+#pie-slice-communications {
+	.pie-slice__image {
+		z-index: 7;
+	}
+}
+#pie-slice-legal {
+	.pie-slice__image {
+		z-index: 6;
+	}
+}
+#pie-slice-finance {
+	.pie-slice__image {
+		z-index: 5;
+	}
+}
+#pie-slice-hr-investments {
+	.pie-slice__image {
+		z-index: 4;
+	}
+}
+
+$board-meeting : -25deg;
+$board-book : -325deg;
+$programs : -260deg;
+$communications : -210deg;
+$hr-investments : -90deg;
+$finance : -145deg;
+$legal : -175deg;
+
+// ***************** PIE SLICE ANIMATION ***************** //
+
+
+.programs {
+	#pie-all, .pie-slice__image {
+		transform: scale(0.5) rotate($programs);	
+	}
+}
+.board-book {
+	#pie-all, .pie-slice__image {
+		transform: scale(0.5) rotate($board-book);
+	}
+}
+.board-meeting {
+	#pie-all, .pie-slice__image {
+		transform: scale(0.5) rotate($board-meeting);
+	}
+}
+.communications  {
+	#pie-all, .pie-slice__image {
+		transform: scale(0.5) rotate($communications);
+	}
 }
 .hr-investments  {
-	#pie-all{
-		transform:rotate(-90deg);
-	}
-	#pie-slice {
-		//opacity: 1;
-		//transform:rotate(-90deg);
-		transform:rotate(-90deg) scale(0.65);
-		//transform: scale(0.65);
-		//transform-origin: 45% 60%;
-	}
-	#pie-slice.fade-in {
-		animation: pie-slice 3s ease-in-out 3s;
-		animation-fill-mode: forwards;
+	#pie-all, .pie-slice__image {
+		transform: scale(0.5) rotate($hr-investments);
 	}
 }
-.finance #pie-all{
-	transform:rotate(-145deg);
+.finance {
+	#pie-all, .pie-slice__image {
+		transform: scale(0.5) rotate($finance);
+	}
 }
-.legal #pie-all {
-	transform:rotate(-175deg);
+.legal {
+	#pie-all, .pie-slice__image {
+		transform: scale(0.5) rotate($legal);
+	}
 }
-
-.fade-out {
-	opacity: 0!important;
-}
-
-
 
 .faded {
-	opacity: 0.3!important;
+
+	transition: all 2s ease-in-out 1s;
+	&:after {
+		content: "";
+		  background: rgba(0, 0, 0, 0.05);
+		    position: absolute;
+		  width: 100%;
+		  height: 100%;
+		  top: 0;
+		  left: 0;
+		  z-index: 20;
+		 }
 }
 
-@keyframes pie-slice-hr-investments {
-	0% {
-		opacity: 1;
-		//transform:rotate(-90deg) scale(0.65);
-		transform:scale(0.5);
-		//transform-origin: 45% 60%;
-		z-index: 150;
-	}
-	100% {
-		//transform:rotate(-90deg) scale(1);
-		transform: scale(1);
-		//transform: scale(2);
-		//transform:rotate(-90deg);
-		opacity: 1;
-		z-index: 150;
-	}
-}
-/*
-.rotation .board-meeting {
-	#pie-slice {
-		animation: pie-slice 2s ease-in-out 1s;
-		animation-fill-mode: forwards;
-	}
-	#pie-all {
-	  animation: board-meeting 5s ease-in-out 1s;
-	  animation-fill-mode: forwards;
-	}
-}
+.active {
 
-.rotation .board-book {
-	#pie-slice {
-		animation: pie-slice 2s ease-in-out 5s;
-		animation-fill-mode: forwards;
-	}
-	#pie-all {
-	  animation: board-book 5s ease-in-out 1s;
-	  animation-fill-mode: forwards;
-	}
-}
-@keyframes pie-slice {
-	0% {
-		opacity: 0;
-	}
-	100% {
+	.pie-text {
+		//display: block;
 		opacity: 1;
+		position: absolute;
+		z-index: 200;
 	}
-}
-@keyframes board-meeting {
-  0% {
-    //transform:rotate(0deg);
-	//transform-origin: initial;
-	transform:rotate(-325deg);
-  }
-  65% {
-	transform:rotate(-25deg);
-  }
-  80% {
-	opacity: 0;
-	transform:rotate(-25deg);
-  }
-  100% {
+	.pie-slice__image {
+		//transform: scale(1);
+		//height: 100%;
+		transition: all 2.25s ease-in-out;
+		z-index: 155!important;
+	}
+	&#pie-slice-board-meeting {
+		.pie-slice__image {
+			
+			transform: scale(0.6) rotate($board-meeting);
+		}
+	}
+	&#pie-slice-board-book {
+		.pie-slice__image {
+			//transition: all 2.25s ease-in-out;
+			transform: scale(0.65) rotate($board-book);
+		}
+	}
+	&#pie-slice-programs {
+		.pie-slice__image {
+			transition: all 2.25s ease-in-out;
+			transform: scale(0.7) rotate($programs);
+		}
+	}
+	&#pie-slice-communications {
+		.pie-slice__image {
+			transition: all 2.25s ease-in-out;
+			transform: scale(0.8) rotate($communications);
+		}
+	}
+	&#pie-slice-legal {
+		.pie-slice__image {
+			transition: all 2.25s ease-in-out;
+			transform: scale(0.9) rotate($legal);
+		}
+	}
+	&#pie-slice-finance {
+		.pie-slice__image {
+			transition: all 2.25s ease-in-out;
+			transform: scale(0.95) rotate($finance);
+		}
+	}
+	&#pie-slice-hr-investments {
+		.pie-slice__image {
+			transition: all 2.25s ease-in-out;
+			transform: scale(1) rotate($hr-investments);
+		}
+	}
 	
-    //transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
-	transform:rotate(-25deg);
-    opacity: 1;
-  }
 }
-*/
+
+.shrink {
+	
+	.pie-text {
+		//display: block;
+		transition: all 1.25s ease-in-out;
+		opacity: 0;
+		z-index: 0;
+	}
+	&#pie-slice-board-meeting {
+		.pie-slice__image {
+			transition: all 1.75s ease-in-out;
+			transform: scale(0.5) rotate($board-meeting);
+		}
+	}
+	&#pie-slice-board-book {
+		.pie-slice__image {
+			transition: all 1.75s ease-in-out;
+			transform: scale(0.5) rotate($board-book);
+		}
+	}
+	&#pie-slice-programs {
+		.pie-slice__image {
+			transition: all 1.75s ease-in-out;
+			transform: scale(0.5) rotate($programs);
+		}
+	}
+	&#pie-slice-communications {
+		.pie-slice__image {
+			transition: all 1.75s ease-in-out;
+			transform: scale(0.5) rotate($communications);
+		}
+	}
+	&#pie-slice-legal {
+		.pie-slice__image {
+			transition: all 1.75s ease-in-out;
+			transform: scale(0.5) rotate($legal);
+		}
+	}
+	&#pie-slice-finance {
+		.pie-slice__image {
+			transition: all 1.75s ease-in-out;
+			transform: scale(0.5) rotate($finance);
+		}
+	}
+	&#pie-slice-hr-investments {
+		.pie-slice__image {
+			transition: all 1.75s ease-in-out;
+			transform: scale(0.5) rotate($hr-investments);
+		}
+	}
+}
+
+
+.logo {
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+}
+.copyright {
+	color: #F29320;
+	position: absolute;
+  bottom: 10px;
+  font-size: 0.9rem;
+  text-align: center;
+  width: 100%;
+}

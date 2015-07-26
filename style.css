@@ -1086,182 +1086,264 @@ body {
   overflow: hidden;
 }
 
+.container {
+  padding-top: 2rem;
+}
+
+h1 {
+  color: #526168;
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+h1 .header-top {
+  font-size: 0.75em;
+  display: block;
+}
+
 #pie {
   transition: all 3s ease-in-out;
 }
 
-#pie-all, .center-icon, #pie-slice {
+#pie-all, .center-icon, .pie-slice img {
   margin: auto;
   position: absolute;
-  top: 0;
+  top: 5rem;
   left: 0;
   bottom: 0;
   right: 0;
 }
 
-#pie-slice {
-  opacity: 0;
-  z-index: 0;
-}
-
-.pie-slice {
+#pie-all {
   -webkit-transform: scale(0.5);
       -ms-transform: scale(0.5);
           transform: scale(0.5);
-}
-
-#pie-all, #pie-slice {
-  width: 720px;
-  height: 720px;
+  opacity: 0;
+  z-index: 300;
 }
 
 .center-icon {
   z-index: 200;
 }
 
-#pie-all {
+.pie-slice {
+  min-height: 720px;
+}
+.pie-slice__image {
   transition: all 3s ease-in-out;
-  z-index: 100;
+  -webkit-transform: scale(0.5);
+      -ms-transform: scale(0.5);
+          transform: scale(0.5);
+  z-index: 150;
 }
 
-.programs #pie-all {
-  -webkit-transform: rotate(-260deg);
-      -ms-transform: rotate(-260deg);
-          transform: rotate(-260deg);
+.pie-text {
+  opacity: 0;
+  transition: all 2s ease-in-out 2.5s;
+  margin: auto;
+  position: absolute;
+  top: 5em;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+.pie-text img {
+  max-height: 100%;
+  width: auto;
 }
 
-.board-book #pie-all {
-  -webkit-transform: rotate(-325deg);
-      -ms-transform: rotate(-325deg);
-          transform: rotate(-325deg);
+#pie-slice-board-meeting .pie-slice__image {
+  z-index: 10;
 }
 
-.board-meeting #pie-all {
-  -webkit-transform: rotate(-25deg);
-      -ms-transform: rotate(-25deg);
-          transform: rotate(-25deg);
+#pie-slice-board-book .pie-slice__image {
+  z-index: 9;
 }
 
-.communications #pie-all {
-  -webkit-transform: rotate(-210deg);
-      -ms-transform: rotate(-210deg);
-          transform: rotate(-210deg);
+#pie-slice-programs .pie-slice__image {
+  z-index: 8;
 }
 
-.hr-investments #pie-all {
-  -webkit-transform: rotate(-90deg);
-      -ms-transform: rotate(-90deg);
-          transform: rotate(-90deg);
-}
-.hr-investments #pie-slice {
-  -webkit-transform: rotate(-90deg) scale(0.65);
-      -ms-transform: rotate(-90deg) scale(0.65);
-          transform: rotate(-90deg) scale(0.65);
-}
-.hr-investments #pie-slice.fade-in {
-  -webkit-animation: pie-slice 3s ease-in-out 3s;
-          animation: pie-slice 3s ease-in-out 3s;
-  -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
+#pie-slice-communications .pie-slice__image {
+  z-index: 7;
 }
 
-.finance #pie-all {
-  -webkit-transform: rotate(-145deg);
-      -ms-transform: rotate(-145deg);
-          transform: rotate(-145deg);
+#pie-slice-legal .pie-slice__image {
+  z-index: 6;
 }
 
-.legal #pie-all {
-  -webkit-transform: rotate(-175deg);
-      -ms-transform: rotate(-175deg);
-          transform: rotate(-175deg);
+#pie-slice-finance .pie-slice__image {
+  z-index: 5;
 }
 
-.fade-out {
-  opacity: 0 !important;
+#pie-slice-hr-investments .pie-slice__image {
+  z-index: 4;
+}
+
+.programs #pie-all, .programs .pie-slice__image {
+  -webkit-transform: scale(0.5) rotate(-260deg);
+      -ms-transform: scale(0.5) rotate(-260deg);
+          transform: scale(0.5) rotate(-260deg);
+}
+
+.board-book #pie-all, .board-book .pie-slice__image {
+  -webkit-transform: scale(0.5) rotate(-325deg);
+      -ms-transform: scale(0.5) rotate(-325deg);
+          transform: scale(0.5) rotate(-325deg);
+}
+
+.board-meeting #pie-all, .board-meeting .pie-slice__image {
+  -webkit-transform: scale(0.5) rotate(-25deg);
+      -ms-transform: scale(0.5) rotate(-25deg);
+          transform: scale(0.5) rotate(-25deg);
+}
+
+.communications #pie-all, .communications .pie-slice__image {
+  -webkit-transform: scale(0.5) rotate(-210deg);
+      -ms-transform: scale(0.5) rotate(-210deg);
+          transform: scale(0.5) rotate(-210deg);
+}
+
+.hr-investments #pie-all, .hr-investments .pie-slice__image {
+  -webkit-transform: scale(0.5) rotate(-90deg);
+      -ms-transform: scale(0.5) rotate(-90deg);
+          transform: scale(0.5) rotate(-90deg);
+}
+
+.finance #pie-all, .finance .pie-slice__image {
+  -webkit-transform: scale(0.5) rotate(-145deg);
+      -ms-transform: scale(0.5) rotate(-145deg);
+          transform: scale(0.5) rotate(-145deg);
+}
+
+.legal #pie-all, .legal .pie-slice__image {
+  -webkit-transform: scale(0.5) rotate(-175deg);
+      -ms-transform: scale(0.5) rotate(-175deg);
+          transform: scale(0.5) rotate(-175deg);
 }
 
 .faded {
-  opacity: 0.3 !important;
+  transition: all 2s ease-in-out 1s;
+}
+.faded:after {
+  content: "";
+  background: rgba(0, 0, 0, 0.05);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 20;
 }
 
-@-webkit-keyframes pie-slice-hr-investments {
-  0% {
-    opacity: 1;
-    -webkit-transform: scale(0.5);
-            transform: scale(0.5);
-    z-index: 150;
-  }
-  100% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-    opacity: 1;
-    z-index: 150;
-  }
+.active .pie-text {
+  opacity: 1;
+  position: absolute;
+  z-index: 200;
+}
+.active .pie-slice__image {
+  transition: all 2.25s ease-in-out;
+  z-index: 155 !important;
+}
+.active#pie-slice-board-meeting .pie-slice__image {
+  -webkit-transform: scale(0.6) rotate(-25deg);
+      -ms-transform: scale(0.6) rotate(-25deg);
+          transform: scale(0.6) rotate(-25deg);
+}
+.active#pie-slice-board-book .pie-slice__image {
+  -webkit-transform: scale(0.65) rotate(-325deg);
+      -ms-transform: scale(0.65) rotate(-325deg);
+          transform: scale(0.65) rotate(-325deg);
+}
+.active#pie-slice-programs .pie-slice__image {
+  transition: all 2.25s ease-in-out;
+  -webkit-transform: scale(0.7) rotate(-260deg);
+      -ms-transform: scale(0.7) rotate(-260deg);
+          transform: scale(0.7) rotate(-260deg);
+}
+.active#pie-slice-communications .pie-slice__image {
+  transition: all 2.25s ease-in-out;
+  -webkit-transform: scale(0.8) rotate(-210deg);
+      -ms-transform: scale(0.8) rotate(-210deg);
+          transform: scale(0.8) rotate(-210deg);
+}
+.active#pie-slice-legal .pie-slice__image {
+  transition: all 2.25s ease-in-out;
+  -webkit-transform: scale(0.9) rotate(-175deg);
+      -ms-transform: scale(0.9) rotate(-175deg);
+          transform: scale(0.9) rotate(-175deg);
+}
+.active#pie-slice-finance .pie-slice__image {
+  transition: all 2.25s ease-in-out;
+  -webkit-transform: scale(0.95) rotate(-145deg);
+      -ms-transform: scale(0.95) rotate(-145deg);
+          transform: scale(0.95) rotate(-145deg);
+}
+.active#pie-slice-hr-investments .pie-slice__image {
+  transition: all 2.25s ease-in-out;
+  -webkit-transform: scale(1) rotate(-90deg);
+      -ms-transform: scale(1) rotate(-90deg);
+          transform: scale(1) rotate(-90deg);
 }
 
-@keyframes pie-slice-hr-investments {
-  0% {
-    opacity: 1;
-    -webkit-transform: scale(0.5);
-            transform: scale(0.5);
-    z-index: 150;
-  }
-  100% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-    opacity: 1;
-    z-index: 150;
-  }
+.shrink .pie-text {
+  transition: all 1.25s ease-in-out;
+  opacity: 0;
+  z-index: 0;
 }
-/*
-.rotation .board-meeting {
-	#pie-slice {
-		animation: pie-slice 2s ease-in-out 1s;
-		animation-fill-mode: forwards;
-	}
-	#pie-all {
-	  animation: board-meeting 5s ease-in-out 1s;
-	  animation-fill-mode: forwards;
-	}
+.shrink#pie-slice-board-meeting .pie-slice__image {
+  transition: all 1.75s ease-in-out;
+  -webkit-transform: scale(0.5) rotate(-25deg);
+      -ms-transform: scale(0.5) rotate(-25deg);
+          transform: scale(0.5) rotate(-25deg);
+}
+.shrink#pie-slice-board-book .pie-slice__image {
+  transition: all 1.75s ease-in-out;
+  -webkit-transform: scale(0.5) rotate(-325deg);
+      -ms-transform: scale(0.5) rotate(-325deg);
+          transform: scale(0.5) rotate(-325deg);
+}
+.shrink#pie-slice-programs .pie-slice__image {
+  transition: all 1.75s ease-in-out;
+  -webkit-transform: scale(0.5) rotate(-260deg);
+      -ms-transform: scale(0.5) rotate(-260deg);
+          transform: scale(0.5) rotate(-260deg);
+}
+.shrink#pie-slice-communications .pie-slice__image {
+  transition: all 1.75s ease-in-out;
+  -webkit-transform: scale(0.5) rotate(-210deg);
+      -ms-transform: scale(0.5) rotate(-210deg);
+          transform: scale(0.5) rotate(-210deg);
+}
+.shrink#pie-slice-legal .pie-slice__image {
+  transition: all 1.75s ease-in-out;
+  -webkit-transform: scale(0.5) rotate(-175deg);
+      -ms-transform: scale(0.5) rotate(-175deg);
+          transform: scale(0.5) rotate(-175deg);
+}
+.shrink#pie-slice-finance .pie-slice__image {
+  transition: all 1.75s ease-in-out;
+  -webkit-transform: scale(0.5) rotate(-145deg);
+      -ms-transform: scale(0.5) rotate(-145deg);
+          transform: scale(0.5) rotate(-145deg);
+}
+.shrink#pie-slice-hr-investments .pie-slice__image {
+  transition: all 1.75s ease-in-out;
+  -webkit-transform: scale(0.5) rotate(-90deg);
+      -ms-transform: scale(0.5) rotate(-90deg);
+          transform: scale(0.5) rotate(-90deg);
 }
 
-.rotation .board-book {
-	#pie-slice {
-		animation: pie-slice 2s ease-in-out 5s;
-		animation-fill-mode: forwards;
-	}
-	#pie-all {
-	  animation: board-book 5s ease-in-out 1s;
-	  animation-fill-mode: forwards;
-	}
+.logo {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
 }
-@keyframes pie-slice {
-	0% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;
-	}
+
+.copyright {
+  color: #F29320;
+  position: absolute;
+  bottom: 10px;
+  font-size: 0.9rem;
+  text-align: center;
+  width: 100%;
 }
-@keyframes board-meeting {
-  0% {
-    //transform:rotate(0deg);
-	//transform-origin: initial;
-	transform:rotate(-325deg);
-  }
-  65% {
-	transform:rotate(-25deg);
-  }
-  80% {
-	opacity: 0;
-	transform:rotate(-25deg);
-  }
-  100% {
-	
-    //transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
-	transform:rotate(-25deg);
-    opacity: 1;
-  }
-}
-*/
